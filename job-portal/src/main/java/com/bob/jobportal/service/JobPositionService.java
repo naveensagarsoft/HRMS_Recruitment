@@ -227,7 +227,7 @@ public class JobPositionService{
     public JobPositionsModel findByPositionId(UUID position_id){
         PositionsEntity position = positionsRepository.findById(position_id).orElse(null);
         if (position == null) return null;
-        JobRelaxationPolicyEntity jobRelaxationPolicy = jobRelaxationPolicyRepository.findById(position.getJobRelaxationPolicyId()).orElse(null);
+//        JobRelaxationPolicyEntity jobRelaxationPolicy = jobRelaxationPolicyRepository.findById(position.getJobRelaxationPolicyId()).orElse(null);
         if (position.getPositionStatus().equals(AppConstants.JOB_POSITION_STATUS_ACTIVE) && position.getIsActive().equals(true) ) {
             JobPostingLocationEntity jobPostingLocation = jobPostingLocationService.getByPositionId(position_id);
             JobSelectionProcessEntity jobSelectionProcess = jobSelectionProcessService.getByPositionIdSelectionProcess(position_id);
@@ -236,7 +236,7 @@ public class JobPositionService{
             List<LocationEntity> locations = locationRepository.findAllByIsActiveTrue();
             List<JobGradeEntity> jobGrades = jobGradeRepository.findAllByIsActiveTrue();
             JobPositionsModel jobPositionsDTO = setValuesDTO(position, jobPostingLocation,  jobVacancies, jobSelectionProcess, departments, locations, jobGrades);
-            jobPositionsDTO.setJobRelaxationPolicyJson(jobRelaxationPolicy == null ? null : jobRelaxationPolicy.getRelaxation());
+//            jobPositionsDTO.setJobRelaxationPolicyJson(jobRelaxationPolicy == null ? null : jobRelaxationPolicy.getRelaxation());
             return jobPositionsDTO;
         }
         return null;

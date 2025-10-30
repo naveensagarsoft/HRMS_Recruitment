@@ -17,7 +17,8 @@ public class CorsConfig {
                                 "https://bobrec.sentrifugo.com",
                                 "https://bobcan.sentrifugo.com",
                                 "http://docs.sentrifugo.com:8080",
-                                "https://bobjava.sentrifugo.com:8443/"
+                                "https://bobjava.sentrifugo.com:8443/",
+                                "https://hrms.sentrifugo.com"
                         ) // Frontend origins
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
