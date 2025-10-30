@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Interview Scheduled</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 0; }
+        .container { background-color: #ffffff; margin: 20px auto; padding: 20px; max-width: 600px; border-radius: 8px; border: 1px solid #ccc; }
+        h2 { color: #34495e; }
+        p { color: #555; font-size: 14px; line-height: 1.6; }
+        .highlight { color: #2980b9; font-weight: bold; }
+        .footer { font-size: 12px; color: #999; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Interview Scheduled - Action Required</h2>
+    <p>Dear <span class="highlight" th:text="${INTERVIEWER_NAME}">Interviewer</span>,</p>
+    <p>An interview has been scheduled with candidate <strong th:text="${CANDIDATE_NAME}">Candidate Name</strong>
+        for the position of <strong th:text="${POSITION_TITLE}">Position</strong>.</p>
+    <p><strong>Date:</strong> <span th:text="${DATE}">Date</span></p>
+    <p><strong>Time:</strong> <span th:text="${TIME}">Time</span></p>
+    <p>Please be prepared with the interview process and evaluation forms.</p>
+
+    <div th:switch="${INTERVIEW_MODE}">
+
+        <div th:case="'Online'">
+            <p>You can join the online interview via the link below:</p>
+            <a th:href="${LINK}">Meeting Link</a>
+        </div>
+
+        <div th:case="'Telephonic'">
+            <p>This is a telephonic interview. Please call the candidate at the scheduled time.</p>
+            <p><strong>Candidate's Phone:</strong> <span th:text="${CANDIDATE_PHONE}"></span></p>
+        </div>
+
+        <div th:case="'In-Person'">
+            <p>This is an in-person interview. Please find the location details below:</p>
+            <p><strong>Location:</strong> <span th:text="${LOCATION}">LOCATION</span></p>
+        </div>
+    </div>
+    <div class="footer">
+        This is an automated message. Please do not reply.
+    </div>
+</div>
+</body>
+</html>

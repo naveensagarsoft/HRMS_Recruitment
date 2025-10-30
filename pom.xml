@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Root parent POM for the multi-module project -->
+    <groupId>com.bob</groupId>
+    <artifactId>BOB_Java</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>BOB_Java</name>
+    <description>Parent POM for BOB multi-module project</description>
+
+    <properties>
+        <spring-boot.version>3.2.5</spring-boot.version>
+    </properties>
+
+    <modules>
+        <module>bob-db</module>
+        <module>common-util</module>
+        <module>candidate-portal</module>
+        <module>job-portal</module>
+        <module>master-data</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>external-tomcat</id>
+            <activation>
+                <property>
+                    <name>externalTomcat</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+</project>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Letter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #004c99;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .details-table th, .details-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .details-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Official Offer Letter</h1>
+    <h2 th:text="${COMPANY_NAME}">Company Name</h2>
+</div>
+
+<div class="content">
+    <p><strong th:text="${CANDIDATE_NAME}">Candidate</strong></p>
+    <p>Dear <span th:text="${CANDIDATE_NAME}">Candidate</span>,</p>
+
+    <p>
+        We are delighted to extend this offer of employment to you for the position of
+        <strong><span th:text="${POSITION_TITLE}">Position</span></strong>
+        at <strong th:text="${COMPANY_NAME}">Company Name</strong>.
+    </p>
+
+    <p>
+        Your passion for this field and impressive background make you a great fit for our team.
+        We are confident that you will be a valuable asset to our organization, and we look forward to a long and successful relationship with you.
+    </p>
+
+    <p>
+        The details of your compensation and other terms of employment are outlined in the attached documents.
+        Your start date is expected to be negotiated upon your acceptance of this offer.
+    </p>
+
+    <p>
+        This offer is contingent upon successful completion of a background check and verification of your eligibility to work in the country.
+    </p>
+
+    <p>
+        Please confirm your acceptance of this offer by signing and returning this letter by the specified date.
+        We are excited about the possibility of you joining our team.
+    </p>
+
+    <a th:href="${PATH}">link</a>
+    <p>If you have any questions, please do not hesitate to contact us.</p>
+</div>
+
+<div class="footer">
+    <p>Sincerely,</p>
+    <p>The Hiring Team</p>
+    <p th:text="${COMPANY_NAME}">Company Name</p>
+</div>
+
+</body>
+</html>
