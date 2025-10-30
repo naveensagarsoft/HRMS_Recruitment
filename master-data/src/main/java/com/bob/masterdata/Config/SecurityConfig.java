@@ -19,17 +19,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // Temporarily disable security for development/testing: allow all requests
         http
                 .cors(cors -> {}) // Enable CORS with default settings
                 .csrf(csrf -> csrf.disable()) // Disable CSRF
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .oauth2ResourceServer(oauth2 ->
-                        oauth2.bearerTokenResolver(tokenResolver)
-                                .jwt(jwt -> jwt.decoder(jwtDecoder()))
+                        .anyRequest().permitAll()
                 );
+
+        // Note: OAuth2 resource server config removed temporarily to avoid JWT enforcement
 
         return http.build();
     }
