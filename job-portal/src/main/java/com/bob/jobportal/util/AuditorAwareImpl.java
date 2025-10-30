@@ -17,17 +17,18 @@ public class AuditorAwareImpl implements AuditorAware<String> {
     private UserRepository userRepository;
     @Override
     public Optional<String> getCurrentAuditor() {
-        var authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication instanceof JwtAuthenticationToken token) {
-            Jwt jwt = token.getToken();
-            // prefer email, else sub
-            String user = jwt.getClaimAsString("sub");
-            if (user == null) {
-                user = jwt.getSubject(); // fallback
-            }
-            return Optional.of(user);
-        }
-        return Optional.empty();
+        return Optional.of("1");
+//        var authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication instanceof JwtAuthenticationToken token) {
+//            Jwt jwt = token.getToken();
+//            // prefer email, else sub
+//            String user = jwt.getClaimAsString("sub");
+//            if (user == null) {
+//                user = jwt.getSubject(); // fallback
+//            }
+//            return Optional.of(user);
+//        }
+//        return Optional.empty();
     }
 }
 
